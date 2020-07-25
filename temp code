@@ -1,0 +1,28 @@
+def median(l):
+    N = len(l)
+    if N%2 == 0:
+        med = (l[N//2] + l[N//2 - 1])/2
+        return med
+    else:
+        med = l[N//2]
+        return med
+
+
+N = int(input())
+n = list(map(int, input().split()))
+f = list(map(int, input().split()))
+l = []
+for x in range(N):
+    while f[x] > 0:
+        l.append(n[x])
+        f[x] -= 1
+l.sort()
+if len(l)%2 == 0:
+    l1 = l[:len(l)//2]
+    l2 = l[len(l)//2:]
+else:
+    l1 = l[:len(l)//2]
+    l2 = l[len(l)//2 + 1:]
+q1 = median(l1)
+q3 = median(l2)
+print(round((q3 - q1),1))
